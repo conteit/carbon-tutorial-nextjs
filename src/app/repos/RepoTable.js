@@ -51,7 +51,7 @@ const RepoTable = ({ rows, headers }) => {
                     ))}
                   </TableExpandRow>
                   <TableExpandedRow colSpan={headers.length + 1}>
-                    <p>Row description</p>
+                    <p>{getRowDescription(rows, row.id)}</p>
                   </TableExpandedRow>
                 </React.Fragment>
               ))}
@@ -64,3 +64,8 @@ const RepoTable = ({ rows, headers }) => {
 };
 
 export default RepoTable;
+
+const getRowDescription = (rows, rowId) => {
+  const row = rows.find(({ id }) => id === rowId);
+  return row ? row.description : '';
+};
